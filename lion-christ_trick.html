@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lion-Christ-Trick</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+<body class="font-roboto bg-gray-100">
+    <div class="container mx-auto py-6">
+        <!-- Header -->
+        <header class="mb-6">
+            <h1 class="text-4xl font-bold text-center text-gray-800">Lion-Christ-Trick</h1>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="mb-8">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="espaces-verts-tab" data-bs-toggle="tab" data-bs-target="#espaces-verts" type="button" role="tab" aria-controls="espaces-verts" aria-selected="true">Espaces Verts</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="atelier-tab" data-bs-toggle="tab" data-bs-target="#atelier" type="button" role="tab" aria-controls="atelier" aria-selected="false">Atelier Mécanique et Propreté</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bureau-tab" data-bs-toggle="tab" data-bs-target="#bureau" type="button" role="tab" aria-controls="bureau" aria-selected="false">Bureau</button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="tab-content" id="myTabContent">
+            <!-- Espaces Verts Section -->
+            <div class="tab-pane fade show active" id="espaces-verts" role="tabpanel" aria-labelledby="espaces-verts-tab">
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Espaces Verts</h2>
+                    <div class="p-4 bg-white rounded shadow">
+                        <p class="text-gray-600">Responsable : <span class="font-semibold">Lionel RAVAGNI</span></p>
+                        <div class="row mt-4">
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-header"><i class="fas fa-tree"></i> Nord</div>
+                                    <div class="card-body">
+                                        <p>Jean Dupont, Marie Curie</p>
+                                    </div>
+                                    <div class="card-footer">Outils : Tondeuse, Tracteur</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-header"><i class="fas fa-leaf"></i> Centre</div>
+                                    <div class="card-body">
+                                        <p>Paul Durand, Sophie Lambert</p>
+                                    </div>
+                                    <div class="card-footer">Outils : Sécateur, Brouette</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-header"><i class="fas fa-sun"></i> Sud</div>
+                                    <div class="card-body">
+                                        <p>Lucas Martin, Claire Petit</p>
+                                    </div>
+                                    <div class="card-footer">Outils : Taille-haie, Balai</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-header"><i class="fas fa-tools"></i> Polyvalente</div>
+                                    <div class="card-body">
+                                        <p>Antoine Roux, Julie Moreau</p>
+                                    </div>
+                                    <div class="card-footer">Outils : Tronçonneuse, Pelle</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Atelier Mécanique et Propreté Section -->
+            <div class="tab-pane fade" id="atelier" role="tabpanel" aria-labelledby="atelier-tab">
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Atelier Mécanique et Propreté</h2>
+                    <div class="p-4 bg-white rounded shadow">
+                        <p class="text-gray-600">Responsable : <span class="font-semibold">Christophe PHILIPPE</span></p>
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="card">
+                                    <div class="card-header"><i class="fas fa-cogs"></i> Atelier Mécanique</div>
+                                    <div class="card-body">
+                                        <p>Marc Vélo, Sarah Dupuis</p>
+                                    </div>
+                                    <div class="card-footer">Outils : Clé anglaise, Tournevis</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card">
+                                    <div class="card-header"><i class="fas fa-broom"></i> Propreté des Espaces Verts</div>
+                                    <div class="card-body">
+                                        <p>Emma Blanc, François Noir</p>
+                                    </div>
+                                    <div class="card-footer">Outils : Aspirateur, Seau</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bureau Section -->
+            <div class="tab-pane fade" id="bureau" role="tabpanel" aria-labelledby="bureau-tab">
+                <section>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Bureau</h2>
+                    <div class="p-4 bg-white rounded shadow">
+                        <p class="text-gray-600">Directrice de l'environnement et des espaces verts : <span class="font-semibold">Mélanie PILLAIS</span></p>
+                    </div>
+                </section>
+                <section id="map-section" class="mt-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Carte de localisation</h2>
+                    <div id="map" style="height: 500px;" class="rounded shadow"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize DataTables
+        $(document).ready(function () {
+            $('#employeeTable').DataTable({
+                responsive: true,
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json"
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Initialize Leaflet map
+        const map = L.map('map').setView([48.9397, 2.1769], 13); // Centered on Sartrouville
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    </script>
+
+    <script>
+        // Mock employee locations
+        const employeeLocations = [
+            { name: 'Jean Dupont', coords: [48.945, 2.178], secteur: 'Nord' },
+            { name: 'Marie Curie', coords: [48.940, 2.180], secteur: 'Centre' },
+            { name: 'Lucas Martin', coords: [48.935, 2.170], secteur: 'Sud' }
+        ];
+
+        const secteurs = {
+            Nord: [[48.950, 2.175], 1000],
+            Centre: [[48.940, 2.180], 1000],
+            Sud: [[48.930, 2.170], 1000]
+        };
+
+        employeeLocations.forEach(employee => {
+            const marker = L.marker(employee.coords).addTo(map).bindPopup(`${employee.name} - Secteur: ${employee.secteur}`);
+
+            const [secteurCenter, radius] = secteurs[employee.secteur];
+            const distance = map.distance(L.latLng(employee.coords), L.latLng(secteurCenter));
+
+            if (distance > radius * 1.1) {
+                if (confirm(`${employee.name} n'est pas dans son secteur ! Voulez-vous envoyer un SMS au numéro +336225921696 ?`)) {
+                    alert(`SMS envoyé : ${employee.name} est hors de son secteur.`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

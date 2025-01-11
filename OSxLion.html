@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Employés</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Gestion des Employés</h1>
+            <input type="text" id="searchBar" placeholder="Rechercher un employé..." />
+        </div>
+    </header>
+
+    <main>
+        <div class="tabs-container">
+            <ul class="nav-tabs" id="regieTabs"></ul>
+            <div class="tab-content" id="regieTabsContent"></div>
+        </div>
+        <div class="data-table-container">
+            <h2>Liste des Employés</h2>
+            <table id="employeeTable" class="display">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Régie</th>
+                        <th>Téléphone</th>
+                        <th>Date d'entrée</th>
+                        <th>Échelon</th>
+                        <th>Date de naissance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Gestion des Employés. Simplifié pour vous.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/dataTablesConfig.js"></script>
+    <script src="js/tabs.js"></script>
+</body>
+
+</html>
