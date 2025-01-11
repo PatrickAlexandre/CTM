@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lion-Christ-Trick</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
+</head>
+<body class="font-roboto bg-gray-100">
+    <div class="container mx-auto py-6">
+        <!-- Header -->
+        <header class="mb-6 text-center">
+            <h1 class="text-4xl font-bold text-gray-800">Lion-Christ-Trick</h1>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav>
+            <ul class="flex border-b">
+                <li class="mr-1"><button class="px-4 py-2 bg-white rounded-t-lg" data-target="#espaces-verts"><i class="fas fa-tree"></i> Espaces Verts</button></li>
+                <li class="mr-1"><button class="px-4 py-2 bg-gray-100" data-target="#atelier"><i class="fas fa-cogs"></i> Atelier Mécanique et Propreté</button></li>
+                <li><button class="px-4 py-2 bg-gray-100" data-target="#bureau"><i class="fas fa-briefcase"></i> Bureau</button></li>
+            </ul>
+        </nav>
+
+        <div id="tabs-content">
+            <!-- Espaces Verts Section -->
+            <section id="espaces-verts" class="p-4 bg-white rounded shadow">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Espaces Verts</h2>
+                <p class="text-gray-600">Responsable : <span class="font-semibold">Lionel RAVAGNI</span></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                    <div class="p-4 border rounded shadow">
+                        <h3 class="text-lg font-semibold mb-2">Nord</h3>
+                        <p>Jean Dupont, Marie Curie</p>
+                        <footer class="text-sm text-gray-500">Outils : Tondeuse, Tracteur</footer>
+                    </div>
+                    <div class="p-4 border rounded shadow">
+                        <h3 class="text-lg font-semibold mb-2">Centre</h3>
+                        <p>Paul Durand, Sophie Lambert</p>
+                        <footer class="text-sm text-gray-500">Outils : Sécateur, Brouette</footer>
+                    </div>
+                    <div class="p-4 border rounded shadow">
+                        <h3 class="text-lg font-semibold mb-2">Sud</h3>
+                        <p>Lucas Martin, Claire Petit</p>
+                        <footer class="text-sm text-gray-500">Outils : Taille-haie, Balai</footer>
+                    </div>
+                    <div class="p-4 border rounded shadow">
+                        <h3 class="text-lg font-semibold mb-2">Polyvalente</h3>
+                        <p>Antoine Roux, Julie Moreau</p>
+                        <footer class="text-sm text-gray-500">Outils : Tronçonneuse, Pelle</footer>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Atelier Mécanique et Propreté Section -->
+            <section id="atelier" class="hidden p-4 bg-white rounded shadow">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Atelier Mécanique et Propreté</h2>
+                <p class="text-gray-600">Responsable : <span class="font-semibold">Christophe PHILIPPE</span></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="p-4 border rounded shadow">
+                        <h3 class="text-lg font-semibold mb-2">Atelier Mécanique</h3>
+                        <p>Marc Vélo, Sarah Dupuis</p>
+                        <footer class="text-sm text-gray-500">Outils : Clé anglaise, Tournevis</footer>
+                    </div>
+                    <div class="p-4 border rounded shadow">
+                        <h3 class="text-lg font-semibold mb-2">Propreté des Espaces Verts</h3>
+                        <p>Emma Blanc, François Noir</p>
+                        <footer class="text-sm text-gray-500">Outils : Aspirateur, Seau</footer>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bureau Section -->
+            <section id="bureau" class="hidden p-4 bg-white rounded shadow">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Bureau</h2>
+                <p class="text-gray-600">Directrice de l'environnement et des espaces verts : <span class="font-semibold">Mélanie PILLAIS</span></p>
+                <div id="map" class="mt-8 h-64 rounded shadow"></div>
+                <!-- Employee DataTable -->
+                <section class="mt-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Données des Employés</h2>
+                    <div class="p-4 bg-white rounded shadow">
+                        <table id="employeeTable" class="display w-full">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nom</th>
+                                    <th>Régie</th>
+                                    <th>Téléphone</th>
+                                    <th>Date d'entrée</th>
+                                    <th>Échelon</th>
+                                    <th>Date de naissance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Jean Dupont</td>
+                                    <td>Espaces Verts</td>
+                                    <td>06 12 34 56 78</td>
+                                    <td>01/03/2015</td>
+                                    <td>5</td>
+                                    <td>12/05/1980</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Marie Curie</td>
+                                    <td>Atelier Mécanique</td>
+                                    <td>06 98 76 54 32</td>
+                                    <td>15/06/2018</td>
+                                    <td>3</td>
+                                    <td>25/11/1985</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Paul Durand</td>
+                                    <td>Centre</td>
+                                    <td>06 56 78 90 12</td>
+                                    <td>12/09/2020</td>
+                                    <td>2</td>
+                                    <td>30/07/1990</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('nav button').forEach(button => {
+            button.addEventListener('click', function () {
+                document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+                document.querySelector(this.dataset.target).classList.remove('hidden');
+                document.querySelectorAll('nav button').forEach(btn => btn.classList.replace('bg-white', 'bg-gray-100'));
+                this.classList.replace('bg-gray-100', 'bg-white');
+            });
+        });
+
+        // Initialize DataTable
+        $(document).ready(function () {
+            $('#employeeTable').DataTable({
+                responsive: true,
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json"
+                }
+            });
+        });
+
+        // Leaflet Map Initialization
+        const map = L.map('map').setView([48.9397, 2.1769], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Sample Employee Locations
+        const locations = [
+            { name: 'Jean Dupont', coords: [48.945, 2.178] },
+            { name: 'Marie Curie', coords: [48.940, 2.180] },
+        ];
+
+        locations.forEach(loc => {
+            L.marker(loc.coords).addTo(map).bindPopup(loc.name);
+        });
+    </script>
+</body>
+</html>
